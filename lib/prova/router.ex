@@ -44,10 +44,10 @@ defmodule Prova.Router do
   end
 
   defp parse_strict(params) do
-    case Map.get(params, "strict") |> String.downcase() do
+    case Map.get(params, "strict", "noop") |> String.downcase() do
       "true" -> {:ok, true}
       "false" -> {:ok, false}
-      _ -> {:error, :not_a_boolean}
+      _ -> {:ok, false}
     end
   end
 
